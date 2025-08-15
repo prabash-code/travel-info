@@ -1,0 +1,343 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=Bungee&family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exile&family=Gravitas+One&family=Mozilla+Headline:wght@200..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=WDXL+Lubrifont+SC&display=swap"
+      rel="stylesheet">
+    <style>
+        .card-title {
+  font-size: 1.5rem;       
+  font-weight: 700;          
+  color: #4d86c2;           
+  margin-bottom: 1rem;       
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);  
+}
+.btn-success {
+  background-color: #28a745; 
+  color: white;
+  border-radius: 2px;
+}
+       .btn-success:hover {
+  background-color: #d1881a; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+ .card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+      margin: 50px;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+      </style>
+  </head>
+  <body>
+
+    <!-- add navigation bar -->
+
+
+<nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-geo-alt-fill" style="font-size:1.5rem;"></i>
+          Travel.info
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end "
+          style="font-weight: 600;" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page"
+                href="index.html">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">ABOUT
+                US</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="explore.html">EXPLORE</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="featured.html">FEATURED</a></li>
+            <li class="nav-item"><a class="nav-link"
+                href="contactUs.html">CONTACT US</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- card section -->
+     <div style="padding: 50px;">
+    <div
+      style=" font-size: 40px; color:darkcyan ; font-weight: 600; font-family: 'Courier New', Courier, monospace;">
+      <p>Featured Tours</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/moldives (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Maldives Tours</h5>
+            <p class="card-text">
+              Island Paradise Getaway<br>
+              Duration: 4 Days and 3 Nights<br>
+              Visit: Male City, Maafushi Island, Coral Reefs, Sun Island Resort<br>
+              Price: $1,500 </p>
+              <input type="button" class="btn btn-success" value="Book Now">
+           
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/rome (2).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Rome City Tours</h5>
+            <p class="card-text">Ancient Rome Walking Tour<br>
+              Duration: 3 Days and 2 nights <br>
+              Visit: Roman Forum, Colosseum, Palatine Hill<br>
+             Price: $850</p>
+             <input type="button"  class="btn btn-success"  value="Book Now">
+             
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/indian (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">India Tours</h5>
+            <p class="card-text">
+              Golden Triangle Tour<br>
+              Duration: 7 Days and 6 Nights<br>
+              Visit: Delhi, Agra (Taj Mahal), Jaipur<br>
+              Price: $600</p>
+              <input type="button"  class="btn btn-success"  value="Book Now">
+           
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/sl (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Sri Lanka Tours</h5>
+            <p class="card-text">
+              Cultural Heritage Journey<br>
+              Duration: 6 Days and 5 Nights<br>
+              Visit: Kandy, Sigiriya, Nuwara Eliya, Galle<br>
+              Price: $350</p>
+              <input type="button"  class="btn btn-success"  value="Book Now">
+            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/singapore (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Singapore Tours</h5>
+            <p class="card-text">
+              City & Garden Exploration<br>
+              Duration: 3 Days and 2 Nights<br>
+              Visit: Marina Bay Sands, Gardens by the Bay, Sentosa Island<br>
+              Price: $8050</p>
+              <input type="button"  class="btn btn-success"  value="Book Now">
+          </div>
+        </div>
+      </div>
+      
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/thai (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Thailand Tours</h5>
+            <p class="card-text">
+              Beaches & Temples Adventure<br>
+              Duration: 5 Days and 4 Nights<br>
+              Visit: Bangkok, Chiang Mai, Phuket<br>
+              Price: $4500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/japanTours (2).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Japan Tours</h5>
+            <p class="card-text">
+              Beaches & Temples Adventure<br>
+              Duration: 3 Days and 2 Nights<br>
+              Visit: <br>
+              Price: $3500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/bali (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Bali Beach</h5>
+            <p class="card-text">
+              Beaches & Temples Adventure<br>
+              Duration: 3 Days and 2 Nights<br>
+              Visit: Kuta Beach, Uluwatu Temple, Sacred Monkey Forest, Tanah Lot Temple<br>
+              Price: $2800</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/cambia (2) (1).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cambia Tours</h5>
+            <p class="card-text">
+           
+             Cambodia Culture & Coast<br>
+              Duration: 5 Days and 4 Nights<br>
+              Visit: Angkor Wat, Bayon Temple, Sokha Beach<br>
+              Price: $4500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/philipine (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Philippines Island</h5>
+            <p class="card-text">
+              Beaches & Temples Adventure<br>
+              Duration: 4 Days and 3 Nights<br>
+              Visit: White Beach, Coron Island, Cebu Taoist Temple<br>
+              Price: $4200</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/greece (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Greece Tours</h5>
+            <p class="card-text">
+              Islands & Temples<br>
+              Duration: 5 Days and 4 Nights<br>
+              Highlights: Parthenon, Temple of Olympian Zeus, Santorini Beaches, Oia Sunset<br>
+              Price: $2000</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/egypt (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Egypt Tours</h5>
+            <p class="card-text">
+              Pyramids & Red Sea<br>
+              Duration: 3 Days and 2 Nights<br>
+              Visit:Pyramids of Giza, Luxor Temple, Red Sea Beach, Snorkeling<br>
+              Price: $5500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/spain (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Spain Tours</h5>
+            <p class="card-text">
+              Beaches & Temples <br>
+              Duration: 5 Days and 4 Nights<br>
+              Visit:Sagrada Familia, Park Güell, Costa Brava Beaches<br>
+              Price: $1500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/morocco (3).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Morocco Tours</h5>
+            <p class="card-text">
+              Temples & Atlantic Coast<br>
+              Duration: 5 Days and 4 Nights<br>
+              Visit: Koutoubia Mosque, Bahia Palace, Essaouira Beach, Medina Tour<br>
+              Price: $2500</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="/img/ausi (2).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Australia Tours</h5>
+            <p class="card-text">
+              Coastal & Heritage<br>
+              Duration: 5 Days and 4 Nights<br>
+              Visit:Sydney Opera House, Bondi Beach, Surfers Paradise, Coastal Walks<br>
+              Price: $8000</p>
+              <input type="button"  class="btn btn-success"  value="Book Now"> 
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+
+    
+
+
+
+
+    <script src="app.js"></script>
+  </body>
+</html>

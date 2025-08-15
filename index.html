@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Video with Text Overlay</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+            rel="stylesheet" />
+        <!-- Bootstrap Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+        <style>
+      /* Video carousel */
+      .carousel-item video {
+        height: 50vh;
+        min-height: 300px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      /* Navbar styling */
+      nav.navbar {
+        background-color: rgba(227, 224, 224, 0.5) !important;
+        backdrop-filter: blur(8px);
+      }
+      nav.navbar .navbar-brand,
+      nav.navbar .nav-link {
+        color: #0f0404 !important;
+        font-weight: 600;
+      }
+      nav.navbar .nav-link.active {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+      #navbarSupportedContent a:hover {
+        background-color: #2ce739;
+        color: #110505;
+      }
+      .navbar-brand {
+        animation: rotateGlow 4s linear infinite;
+        background: linear-gradient(45deg, #0816d6, #c0e713);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+      }
+      @keyframes rotateGlow {
+        0% {
+          filter: drop-shadow(0 0 5px #0816d6);
+        }
+        50% {
+          filter: drop-shadow(0 0 15px #c0e713);
+        }
+        100% {
+          filter: drop-shadow(0 0 5px #0816d6);
+        }
+      }
+
+      /* Text overlay container */
+      .carousel-caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 2rem 4rem;
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        text-align: left;
+      }
+      .carousel-caption h5 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      }
+      .carousel-caption p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 2rem;
+        text-shadow: 0 0 8px rgba(0,0,0,0.6);
+      }
+      .carousel-caption .btn-primary {
+        background-color: #00ffd0;
+        border-color: #00ffd0;
+        padding: 0.7rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        align-self: flex-start;
+        margin-left: 200px;
+      }
+      .carousel-caption .btn-primary:hover {
+        background-color: #00cfa7;
+      }
+
+      /* Cards CSS */
+      .card-img-top {
+        width: 50px;
+       
+        margin-left: 30px;
+        object-fit: contain;
+      }
+      .card {
+        background-color: #f1f3e8;
+        border-color: #f1f3e8;
+      }
+      .card-title {
+        font-weight: 600;
+      }
+      .card:hover {
+              transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      }
+
+      /* Popular destinations & feedback card images */
+      .card-img {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+        border-radius: 20px;
+    
+      }
+
+      /* Feedback face images */
+      .card-img-face {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 1rem auto 0;
+        display: block;
+      }
+
+      /* Reduce column padding for better spacing */
+      .row > .col {
+        padding: 15px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .carousel-caption {
+          padding: 1.5rem 2rem;
+        }
+        .carousel-caption h5 {
+          font-size: 1.8rem;
+        }
+        .carousel-caption p {
+          font-size: 1rem;
+          max-width: 100%;
+        }
+        .card-img-face {
+          width: 120px;
+          height: 120px;
+          margin-top: 0.5rem;
+        }
+      
+      }
+    </style>
+    </head>
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-geo-alt-fill" style="font-size: 1.5rem"></i>
+                    Travel.info
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="index.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">ABOUT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="explore.html">EXPLORE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="featured.html">FEATURED</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactUs.html">CONTACT
+                                US</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Video Carousel -->
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"
+            data-bs-interval="5000" data-bs-pause="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <video class="d-block w-100" autoplay muted loop
+                        playsinline>
+                        <source src="/img/wallPaper1.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption">
+                        <h5>Escape the ordinary</h5>
+                        <p>Step off the beaten path and into a world of wonder.
+                            Discover
+                            hidden shores, sunrise vistas, and inspiring moments
+                            that will
+                            stay with you long after the journey ends.</p>
+                        <a href="explore.html" class="btn btn-primary">EXPLORE
+                            NOW</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <video class="d-block w-100" muted loop playsinline>
+                        <source src="/img/wallPaper2.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption">
+                        <h5>Where journeys begin</h5>
+                        <p>Every destination has a story and you’re the author.
+                            Let new
+                            experiences, cultures, and flavors shape your travel
+                            tale from
+                            this very first step.</p>
+                        <a href="explore.html" class="btn btn-primary">EXPLORE
+                            NOW</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Card section: best services -->
+        <div class="card-group my-5 mx-3 mx-md-5">
+            <div class="card">
+                <img src="/img/bestservice.jpg" class="card-img-top"
+                    alt="Professional Tour Guide" />
+                <div class="card-body">
+                    <h5 class="card-title">Professional Tour Guide</h5>
+                    <p class="card-text">Passionate, warm and multilingual, our
+                        award-winning tour guides are more than happy to share
+                        their
+                        knowledge, stories, and local insights to make your
+                        journey
+                        unforgettable.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/img/satisfied-icon.jpg" class="card-img-top"
+                    alt="Customer Satisfaction" />
+                <div class="card-body">
+                    <h5 class="card-title">Customer Satisfaction</h5>
+                    <p class="card-text">Our global teams of experts handpick
+                        and curate
+                        the best experiences geared towards intrepid travelers
+                        as they seek
+                        authentic, unique, and unforgettable adventures around
+                        the
+                        world.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/img/payment.jpg" class="card-img-top"
+                    alt="Secure Payment" />
+                <div class="card-body">
+                    <h5 class="card-title">Secure Payment</h5>
+                    <p class="card-text">Your trust matters to us; therefore,
+                        our website
+                        is protected by the utmost level of online security to
+                        keep your
+                        information safe and confidential.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Destinations -->
+        <h2 class="mx-3 mx-md-5"
+            style="font-weight: 600;font-family: Nunito, sans-serif ">Popular
+            Destination</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mx-3 mx-md-5 mb-5 ">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/rome (2).jpg" class="card-img" alt="Italy"
+                        style="border-radius: 10px 10px 0 0;" />
+                    <div
+                        class="card-footer d-flex flex-column align-items-start">
+                        <h5
+                            style="font-weight: 700; margin-bottom: 0.5rem;">Rome
+                            City Tour</h5>
+                        <a href="featured.html"
+                            class="btn btn-success btn-sm mt-auto">See
+                            more...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/singapore (3).jpg" class="card-img"
+                        alt="Singapore" style="border-radius: 10px 10px 0 0;" />
+                    <div
+                        class="card-footer d-flex flex-column align-items-start">
+                        <h5
+                            style="font-weight: 700; margin-bottom: 0.5rem;">Singapore
+                            Tour</h5>
+                        <a href="featured.html"
+                            class="btn btn-success btn-sm mt-auto">See
+                            more...</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/thai (3).jpg" class="card-img" alt="India"
+                        style="border-radius: 10px 10px 0 0;" />
+                    <div
+                        class="card-footer d-flex flex-column align-items-start">
+                        <h5
+                            style="font-weight: 700; margin-bottom: 0.5rem;">Thai
+                            Tour</h5>
+                        <a href="featured.html"
+                            class="btn btn-success btn-sm mt-auto">See
+                            more...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Feedback -->
+
+        <div id="carouselExample" class="carousel slide"
+            data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <h2 class="mx-3 mx-md-5"
+                        style="font-weight: 600; font-family: Nunito, sans-serif;">
+                        What Our Customers Feedbacks
+                    </h2>
+                    <p class="mx-3 mx-md-5 mb-4" style="font-weight: 600;">
+                        We have many happy customers that have booked holidays
+                        with us.
+
+                    </p>
+                    <div
+                        class="row row-cols-1 row-cols-md-3 g-4 mx-3 mx-md-5 mb-5">
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/face111 .jpg"
+                                    class="card-img-face" alt="John C" />
+                                <h5>John C.</h5>
+                                <p class="px-3">
+                                    "Thanks to this travel guide, I discovered amazing places I never knew existed. Highly recommend!"
+                                    <br>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/face2 .jpg" class="card-img-face"
+                                    alt="David L." />
+                                <h5>David L.</h5>
+                                <p class="px-3">
+                                    "The local tips and insights were invaluable. It felt like traveling with a friend who knows the area well."
+                                    <br>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/face3 .jpg" class="card-img-face"
+                                    alt="Micolous D." />
+                                <h5>Micolous D.</h5>
+                                <p class="px-3">
+                                    "This app made my trip so much easier and more enjoyable. The guides were detailed and easy to follow."
+                                    <br>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <h2 class="mx-3 mx-md-5"
+                        style="font-weight: 600; font-family: Nunito, sans-serif;">
+                        More Customer Feedbacks
+                    </h2>
+                    <p class="mx-3 mx-md-5 mb-4" style="font-weight: 600;">
+                        We appreciate all our happy customers sharing their
+                        stories.
+                    </p>
+                    <div
+                        class="row row-cols-1 row-cols-md-3 g-4 mx-3 mx-md-5 mb-5">
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/facelady .jpg"
+                                    class="card-img-face" alt="Anna K" />
+                                <h5>Anna K.</h5>
+                                <p class="px-3">
+                                    "Exceptional service and incredible attention to detail throughout my trip."
+                                    <br>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/face5.jpg" class="card-img-face"
+                                    alt="Mark T." />
+                                <h5>Mark T.</h5>
+                                <p class="px-3">
+                                    "Travel.info made planning easy and stress-free. Highly recommend to everyone."
+                                    <br>
+                                                                        <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 text-center">
+                                <img src="/img/face4 .jpg" class="card-img-face"
+                                    alt="Lucy M." />
+                                <h5>Lucy M.</h5>
+                                <p class="px-3">
+                                    "Amazing experiences thanks to their great guides and support."
+                                    <br>
+
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                    <img src="/img/star (1).png"
+                                        class="card-img-top1" alt>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"
+                    aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"
+                    aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- details -->
+        <div class="card-group"
+            style="margin-left: 4rem;margin-right: 4rem; padding-left: 10px;">
+            <div class="card">
+
+                <div class="card-body" style="font-weight: 550;">
+                    <h5 class="card-title"
+                        style="font-weight: 600;color: #8d8b87;">travel.info</h5>
+                    <p class="card-text">
+                        Prabash withanachchi<br>
+                        Elpitiya;<br>
+                        Galle;<br>
+                        e-mail:prabashwithanachchi99@gmail.com<br>
+                    </p>
+                    <img src="/img/icons8-facebook-48.jpg" class="card-img-top"
+                        alt="...">
+                    <img src="/img//icons8-linkedin-48.png" class="card-img-top"
+                        alt="...">
+                    <img src="/img/icons8-youtube-48.png" class="card-img-top"
+                        alt="...">
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card-body" style="font-weight: 550;">
+                    <h5 class="card-title"
+                        style="color: #8d8b87;">Locations</h5>
+                    <p class="card-text"><ul>
+                            <li>Asia</li>
+                            <li>Europe</li>
+                            <li>Africa</li>
+                            <li>North America</li>
+                            <li>South America</li>
+                        </ul></p>
+                </div>
+
+            </div>
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title"
+                        style="color: #8d8b87;">Categories</h5>
+                    <p class="card-text"><ul>
+                            <li>Popular Destinations</li>
+                            <li>Adventure Travel</li>
+                            <li>Beach & Island Escapes</li>
+                            <li>City Guides </li>
+                            <li>Cultural & Heritage</li>
+                        </ul></p>
+                </div>
+
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

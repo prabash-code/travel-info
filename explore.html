@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Gemini AI Travel Guide</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+  <!-- Bootstrap  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&family=Bungee&family=Edu+VIC+WA+NT+Hand+Pre:wght@400..700&family=Exile&family=Gravitas+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=WDXL+Lubrifont+SC&display=swap"
+    rel="stylesheet" />
+
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+
+    /* Navbar styles from your example */
+    .navbar {
+      background-color:transparent;
+      font-weight: 600;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #e0d6d6;
+    }
+
+    .navbar-brand i {
+      animation: rotateGlow 4s linear infinite;
+      background: linear-gradient(45deg, #5050bb, #c0e713);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      background-color: #72bad9;
+      border-radius: 5px;
+    }
+
+    /* Your existing Gemini page styles */
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .travel-icon {
+      font-size: 50px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    input[type="search"] {
+      flex: 1;
+      max-width: 500px;
+      padding: 12px 15px;
+      font-size: 16px;
+      border-radius: 30px;
+      border: 1px solid #ced4da;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 30px;
+      background-color: #007bff;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Changed answer palette styles ONLY */
+
+    #outputCard {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      background-color: #1e1e2f;      /* Dark navy background */
+      border-radius: 15px;
+      box-shadow: 0 0 20px #007bff88; /* subtle blue glow */
+      color: #a0e7ff;                /* Light blue text */
+      padding: 25px;
+      max-width: 800px;
+      margin: 1.5rem auto;
+    }
+
+    #outputCard.show {
+      display: block;
+      opacity: 1;
+    }
+
+    #outputCard .card {
+      background: transparent !important; /* Make inner card transparent */
+      box-shadow: none !important;
+      border: none !important;
+      color: inherit;
+      padding: 0;
+      text-align: left;
+    }
+
+    #outputCard .card-title {
+      color: #68b0ff !important; /* lighter blue for title */
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    #outputCard .card-text {
+      color: #c1d9ff !important;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    #outputCard .card-text span {
+      font-weight: bold;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+
+  </style>
+</head>
+<body>
+  <video
+    id="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    src="/img/explorer.mp4">    
+  </video>
+
+  <!-- Your navbar exactly as given -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-geo-alt-fill" style="font-size:1.5rem;"></i>
+        Travel.info
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" style="font-weight: 600;" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">ABOUT US</a></li>
+          <li class="nav-item"><a class="nav-link" href="explore.html">EXPLORE</a></li>
+          <li class="nav-item"><a class="nav-link" href="featured.html">FEATURED</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactUs.html">CONTACT US</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Your Gemini AI main container -->
+  <div class="container">
+    <div class="travel-icon">✈️🌍</div>
+    <h2>Discover Your Dream Destination</h2>
+
+    <div class="search-box">
+      <input
+        type="search"
+        id="input"
+        class="form-control"
+        placeholder="Type a place like Paris, Kandy, Tokyo..."
+      />
+      <button onclick="askGemini()" class="btn btn-primary">Search</button>
+    </div>
+
+    <div id="outputCard" class="mt-4">
+      <div class="card">
+        <h5 class="card-title">
+          <i class="fas fa-map-marker-alt"></i> Travel Guide Result
+        </h5>
+        <p id="output" class="card-text">Your travel info will appear here...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = "AIzaSyDDbn-WpxYiOHa_cQUEYVxObfPN_04nkgY";
+
+    async function askGemini() {
+      const input = document.getElementById("input").value.trim();
+      const output = document.getElementById("output");
+      const card = document.getElementById("outputCard");
+
+      if (!input) {
+        output.innerHTML = "🛑 Please enter a place name.";
+        card.classList.add("show");
+        return;
+      }
+
+      output.innerHTML = "⏳ Loading travel insights...";
+      card.classList.add("show");
+
+      const prompt = `Tell me about tourist attractions, travel tips, weather, and culture of ${input}. Give emojis if appropriate.`;
+
+      const requestBody = {
+        contents: [
+          {
+            parts: [{ text: prompt }],
+          },
+        ],
+      };
+
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok && data.candidates && data.candidates.length > 0) {
+          output.innerHTML = data.candidates[0].content.parts[0].text.replace(
+            /\n/g,
+            "<br>"
+          );
+        } else {
+          output.innerHTML =
+            "⚠️ No response or error: " + (data.error?.message || "Unknown error");
+        }
+      } catch (error) {
+        output.innerHTML = `❌ Error: ${error.message}`;
+      }
+
+      card.classList.add("show");
+    }
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS animation init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
